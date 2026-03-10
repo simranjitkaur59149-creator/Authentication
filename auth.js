@@ -2,12 +2,14 @@ import express from "express";
 import mongoose, { Schema } from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import dotenv from "dotenv";
+dotenv.config();
 const app = express();
 const PORT = 8000;
 const saltRound = 12;
 app.use(express.json());
 mongoose
-  .connect(process.env.MONGOURL)
+  .connect(process.env.MONGO_URL)
   .then(() => console.log("Connected"))
   .catch((err) => console.log(err));
 const userSchema = new mongoose.Schema({

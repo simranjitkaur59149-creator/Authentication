@@ -1,17 +1,19 @@
 import express from "express";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 const app = express();
 const PORT = 8000;
 app.use(express.json());
 //establish connection
 mongoose
-  .connect("mongodb://127.0.0.1:27017/crud")
+  .connect(process.env.MONGO_URL)
   .then(() => console.log("Connected"))
   .catch((err) => console.log(err));
 //schema
 const userSchema = new mongoose.Schema({
-  name: { type: String, require: true },
-  email: { type: String, require: true, match: /.+\@.+\..+/ ,unique:true},
+  name: { type: String, required: true },
+  email: { type: String, required: true, match: /.+\@.+\..+/ ,unique:true},
 
 });
 //Model compiled from schema
