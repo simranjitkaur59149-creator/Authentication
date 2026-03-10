@@ -7,7 +7,7 @@ const PORT = 8000;
 const saltRound = 12;
 app.use(express.json());
 mongoose
-  .connect(`${process.env.MONGOURL}/usersDB`)
+  .connect(process.env.MONGOURL)
   .then(() => console.log("Connected"))
   .catch((err) => console.log(err));
 const userSchema = new mongoose.Schema({
