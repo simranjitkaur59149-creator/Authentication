@@ -3,13 +3,14 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import cors from "cors"
 
 dotenv.config();
 
 const app = express();
 const PORT = 8000;
 const saltRound = 12;
-
+app.use(cors());
 app.use(express.json());
 
 /* -------------------- MongoDB Connection -------------------- */
