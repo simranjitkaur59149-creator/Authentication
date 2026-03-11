@@ -15,7 +15,7 @@ app.use(express.json());
 /* -------------------- MongoDB Connection -------------------- */
 
 mongoose
-  .connect(process.env.MONGO_URL)
+  .connect(`${process.env.MONGO_URL}/authDb`)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
 
